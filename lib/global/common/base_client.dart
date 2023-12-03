@@ -18,7 +18,7 @@ class BaseClient {
   }
 
   Future<dynamic> post(String api, Map<String, dynamic> data) async {
-    var url = Uri.parse('${BaseAPI.baseURL}${api}');
+    var url = Uri.parse('${BaseAPI.baseURL}$api');
     Map<String, String> headers = {};
     var request = http.MultipartRequest('POST', url);
     // Convert data to Map<String, String> if needed
