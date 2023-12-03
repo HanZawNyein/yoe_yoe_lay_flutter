@@ -1,5 +1,3 @@
-import 'package:yoe_yoe_lay/modules/auth/api/auth_api.dart';
-
 class BaseAPI {
   // HTTPS
   // https://e334-2a09-bac1-4b00-00-1f1-1c3.ngrok-free.app/web/login
