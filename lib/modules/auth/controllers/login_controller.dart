@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:yoe_yoe_lay/global/api/auth_api.dart';
+import 'package:yoe_yoe_lay/modules/auth/api/auth_api.dart';
 import 'package:yoe_yoe_lay/global/common/base_client.dart';
 
 class LoginController extends GetxController {
@@ -9,14 +9,15 @@ class LoginController extends GetxController {
 
   void login() async {
     try {
-      Map body = {
-        "phone_number": loginController.text.trim(),
+      Map<String,dynamic> body = {
+        "login": loginController.text.trim(),
         "password": passwordController.text.trim()
       };
-      var response = await PrivateBaseClient()
-          .get(AuthAPI().loginAPI)
-          .catchError((error) {});
+      var response = await BaseClient()
+          .post(AuthAPI().loginAPI, body)
+          .catchError((error) => print(error));
       if (response == null) return;
+      print(response);
       debugPrint("Successful");
     } catch (error) {
       Get.defaultDialog(
