@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:yoe_yoe_lay/global/api/base_api.dart';
@@ -33,6 +34,13 @@ class BaseClient {
       return await response.stream.bytesToString();
     } else {
       //throw error
+      Get.defaultDialog(
+        title: "ERROR",
+        middleText: response.reasonPhrase.toString(),
+        onConfirm: () {
+          Get.back(); // Close the dialog
+        },
+      );
     }
   }
 }
