@@ -8,9 +8,7 @@ class BaseClient {
 
   Future<dynamic> get(String api) async {
     var url = Uri.parse(BaseAPI.baseURL + api);
-    var headers = {
-      "Cookie": "session_id=1234",
-    };
+    Map<String, String> headers = {};
     var response = await client.get(url, headers: headers);
     if (response.statusCode == 200) {
       return response.body;
@@ -21,7 +19,7 @@ class BaseClient {
 
   Future<dynamic> post(String api, Map<String, dynamic> data) async {
     var url = Uri.parse('${BaseAPI.baseURL}${api}');
-    // var headers = {'Cookie': ''};
+    Map<String, String> headers = {};
     var request = http.MultipartRequest('POST', url);
     // Convert data to Map<String, String> if needed
     Map<String, String> formData = {};
@@ -29,7 +27,7 @@ class BaseClient {
       formData[key] = value.toString();
     });
     request.fields.addAll(formData);
-    // request.headers.addAll(headers);
+    request.headers.addAll(headers);
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
