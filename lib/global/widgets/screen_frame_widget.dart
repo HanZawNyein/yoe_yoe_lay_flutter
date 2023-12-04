@@ -13,7 +13,7 @@ class ScreenFrameWidget extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
-        actions: [
+        actions: const [
           Icon(Icons.notifications),
         ],
       ),

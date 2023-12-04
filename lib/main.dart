@@ -10,7 +10,7 @@ Future<void> main() async {
   runApp(GetMaterialApp(
     initialRoute: (session['sessionId'] != null) ? '/home' : '/login',
     getPages: [
-      GetPage(name: '/home', page: () => const HomeScreen()),
+      GetPage(name: '/home', page: () => HomeScreen()),
       GetPage(name: '/login', page: () => LoginScreen()),
     ],
   ));

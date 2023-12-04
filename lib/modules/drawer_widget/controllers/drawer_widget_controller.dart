@@ -18,6 +18,7 @@ class DrawerWidgetController extends GetxController {
     // print(userProfile);
     var session = await Session().getSession();
     // print(session);
+    print(userProfile);
     userProfile.sessionId = session['sessionId'];
     // print(profileModel);
   }
