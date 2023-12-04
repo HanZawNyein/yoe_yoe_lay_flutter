@@ -1,8 +1,9 @@
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class Session {
+class Session extends GetxController {
+
   Future<void> saveSession(Map<String, dynamic> data) async {
-    print(data);
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setInt('partnerId', data['partner_id']['id']);
     await prefs.setInt('uid', data['uid']);
@@ -12,11 +13,15 @@ class Session {
 
   Future<Map<String, dynamic>> getSession() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
+    print("object");
     final Map<String, dynamic> data = {
-      "partnerId": await prefs.getInt('partnerId'),
-      "uid": await prefs.getInt('uid'),
-      "sessionId": await prefs.getString('sessionId'),
+      "partnerId": prefs.getInt('partnerId'),
+      "uid": prefs.getInt('uid'),
+      "sessionId": prefs.getString('sessionId'),
     };
+    print("data get sesion");
+    print(data);
+    // sessionData.value = data; // Update the sessionData observable
     return data;
   }
 

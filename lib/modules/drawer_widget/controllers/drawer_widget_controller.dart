@@ -14,8 +14,10 @@ class DrawerWidgetController extends GetxController {
 
   void fetchProfile() async {
     // userProfile.value = {"name": "Han"};
-    userProfile = await DrawerService().getProfile();
+    userProfile = (await DrawerService().getProfile())!;
+    print(userProfile);
     var session = await Session().getSession();
+    print(session);
     userProfile.sessionId = session['sessionId'];
     // print(profileModel);
   }

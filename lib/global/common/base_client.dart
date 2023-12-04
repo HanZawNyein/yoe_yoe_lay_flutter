@@ -13,7 +13,12 @@ class BaseClient {
     var url = Uri.parse(BaseAPI.baseURL + api);
     Map<String, String> headers = {};
     var cookie = await Session().getSession();
-    if (cookie != null) headers['Cookie'] = cookie['sessionId'];
+    print("get request");
+    print(cookie);
+    print(api);
+    if (cookie['sessionId'] != null){
+      headers['Cookie'] = cookie['sessionId'];
+    };
     var response = await client.get(url, headers: headers);
     if (response.statusCode == 200) {
       var result = json.decode(response.body);
