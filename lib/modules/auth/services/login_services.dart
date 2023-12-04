@@ -8,7 +8,6 @@ class LoginService {
     var response = await BaseClient()
         .post(AuthAPI().loginAPI, body)
         .catchError((error) => print(error));
-    print(response);
     if (response == null) ;
     return loginFromJson(response);
   }
