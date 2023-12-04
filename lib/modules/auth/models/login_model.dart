@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'package:yoe_yoe_lay/global/common/session.dart';
+
 LoginModel loginFromJson(Map<String, dynamic> json) =>
     LoginModel.fromJson(json);
 
@@ -21,6 +23,7 @@ class LoginModel {
   String? partnerName;
 
   factory LoginModel.fromJson(Map<String, dynamic> json) {
+
     return LoginModel(
       userId: json["uid"],
       partnerId: json["partner_id"]['id'],

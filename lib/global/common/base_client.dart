@@ -19,11 +19,11 @@ class BaseClient {
       var result = json.decode(response.body);
       if (result['isFullFilled'] as bool) {
         var cookie = response.headers['set-cookie'];
-        if (cookie != null) {
-          var temp = result['data'];
-          temp['session_id'] = cookie;
-          Session().saveSession(temp);
-        }
+        // if (cookie != null) {
+        //   var temp = result['data'];
+        //   temp['session_id'] = cookie;
+        //   Session().saveSession(temp);
+        // }
         return result['data'];
       }
     } else {
@@ -35,7 +35,8 @@ class BaseClient {
     var url = Uri.parse('${BaseAPI.baseURL}$api');
     Map<String, String> headers = {};
     var cookie = await Session().getSession();
-    if (cookie != null) headers['Cookie'] = cookie['sessionId'];
+    print(cookie);
+    if (cookie['sessionId'] != null) headers['Cookie'] = cookie['sessionId'];
     var request = http.MultipartRequest('POST', url);
     // Convert data to Map<String, String> if needed
     Map<String, String> formData = {};
@@ -51,9 +52,7 @@ class BaseClient {
       if (result['isFullFilled'] as bool) {
         var cookie = response.headers['set-cookie'];
         if (cookie != null) {
-          var temp = result['data'];
-          temp['session_id'] = cookie;
-          Session().saveSession(temp);
+          result['data']['session_id']=cookie;
         }
         return result['data'];
       }

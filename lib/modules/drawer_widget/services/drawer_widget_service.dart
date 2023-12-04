@@ -9,8 +9,6 @@ class DrawerService {
         .get(DrawerAPI().profileAPI)
         .catchError((error) => print(error));
     if (response == null) ;
-
-    print(response.runtimeType);
     return profileFromJson(response);
   }
 }

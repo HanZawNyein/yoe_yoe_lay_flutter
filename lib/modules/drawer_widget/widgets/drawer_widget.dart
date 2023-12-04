@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:yoe_yoe_lay/modules/drawer_widget/controllers/drawer_widget_controller.dart';
 
+import '../../auth/controllers/auth_controller.dart';
+
 class DrawerWidget extends StatelessWidget {
   final DrawerWidgetController drawerWidgetController = Get.put(DrawerWidgetController());
+  final LoginController loginController = Get.put(LoginController());
 
   DrawerWidget({super.key});
 
@@ -42,7 +45,9 @@ class DrawerWidget extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.logout),
             title: const Text('Logout'),
-            onTap: () {},
+            onTap: () {
+              loginController.logout();
+            },
           ),
         ],
       ),

@@ -10,6 +10,17 @@ class LoginService {
         .post(AuthAPI().loginAPI, body)
         .catchError((error) => print(error));
     if (response == null) ;
+    print(response);
+    // print(r)
+    Session().saveSession(response);
     return loginFromJson(response);
+  }
+
+  Future<void> getLogout() async {
+    var response = await BaseClient()
+        .get(AuthAPI().logoutAPI)
+        .catchError((error) => print(error));
+    if (response == null) ;
+    await Session().removeSession();
   }
 }

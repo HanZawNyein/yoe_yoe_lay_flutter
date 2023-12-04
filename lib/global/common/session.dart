@@ -20,7 +20,10 @@ class Session {
     return data;
   }
 
-  Future<String> getPrefsData(String session) async {
-    return '';
+  Future<void> removeSession() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.remove('partnerId');
+    await prefs.remove('uid');
+    await prefs.remove('sessionId');
   }
 }

@@ -17,4 +17,9 @@ class LoginController extends GetxController {
     // Get.toNamed('/home'); // Navigate to '/details' route
     Get.offAllNamed('/home'); // Navigate to '/details' route
   }
+
+  void logout() async {
+    await LoginService().getLogout();
+    Get.offAllNamed('/login'); // Navigate to '/details' route
+  }
 }
