@@ -12,9 +12,20 @@ class BaseClient {
   Future<dynamic> get(String api) async {
     var url = Uri.parse(BaseAPI.baseURL + api);
     Map<String, String> headers = {};
+    var cookie = await Session().getSession();
+    if (cookie != null) headers['Cookie'] = cookie['sessionId'];
     var response = await client.get(url, headers: headers);
     if (response.statusCode == 200) {
-      return response.body;
+      var result = json.decode(response.body);
+      if (result['isFullFilled'] as bool) {
+        var cookie = response.headers['set-cookie'];
+        if (cookie != null) {
+          var temp = result['data'];
+          temp['session_id'] = cookie;
+          Session().saveSession(temp);
+        }
+        return result['data'];
+      }
     } else {
       //   throw error
     }
@@ -22,8 +33,8 @@ class BaseClient {
 
   Future<dynamic> post(String api, Map<String, dynamic> data) async {
     var url = Uri.parse('${BaseAPI.baseURL}$api');
-    var cookie = await Session().getSession();
     Map<String, String> headers = {};
+    var cookie = await Session().getSession();
     if (cookie != null) headers['Cookie'] = cookie['sessionId'];
     var request = http.MultipartRequest('POST', url);
     // Convert data to Map<String, String> if needed

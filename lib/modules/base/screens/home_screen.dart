@@ -13,6 +13,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return ScreenFrameWidget(
       title: 'Home',
+      body: Container(color: Colors.red,),
     );
   }
 }
