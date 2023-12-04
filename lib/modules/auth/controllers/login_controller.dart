@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:yoe_yoe_lay/modules/auth/api/auth_api.dart';
-import 'package:yoe_yoe_lay/global/common/base_client.dart';
 import 'package:yoe_yoe_lay/modules/auth/models/login_model.dart';
-
-import '../services/login_services.dart';
+import 'package:yoe_yoe_lay/modules/auth/services/login_services.dart';
 
 class LoginController extends GetxController {
   TextEditingController loginController = TextEditingController();

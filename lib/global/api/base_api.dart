@@ -6,7 +6,7 @@ class BaseAPI {
   // static final String websocketURL = "wss://$base/websocket";
 
   // HTTP
-  static final String base = "192.168.43.134:8069";
+  static final String base = "192.168.1.2:8069";
   static final String baseURL = "http://$base/";
   static final String websocketURL = "ws://$base/websocket";
 }

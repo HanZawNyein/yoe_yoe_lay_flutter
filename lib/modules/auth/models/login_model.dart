@@ -4,10 +4,8 @@
 
 import 'dart:convert';
 
-LoginModel loginFromJson(String str) =>LoginModel.fromJson(json.decode(str));
-
-// String postToJson(List<LoginModel> data) =>
-//     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+LoginModel loginFromJson(Map<String, dynamic> json) =>
+    LoginModel.fromJson(json);
 
 class LoginModel {
   LoginModel({
@@ -22,18 +20,12 @@ class LoginModel {
   String login;
   String? partnerName;
 
-  factory LoginModel.fromJson(Map<String, dynamic> json) => LoginModel(
-        userId: json["user_id"],
-        partnerId: json["partner_id"],
-        partnerName: json["partner_name"],
-        login: json["login"],
-      );
-
-//
-// Map<String, dynamic> toJson() => {
-//   "userId": userId,
-//   "id": id,
-//   "title": title,
-//   "body": body,
-// };
+  factory LoginModel.fromJson(Map<String, dynamic> json) {
+    return LoginModel(
+      userId: json["uid"],
+      partnerId: json["partner_id"]['id'],
+      partnerName: json["partner_id"]['name'],
+      login: json["login"],
+    );
+  }
 }

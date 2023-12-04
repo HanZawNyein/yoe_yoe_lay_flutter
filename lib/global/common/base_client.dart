@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
@@ -31,7 +33,11 @@ class BaseClient {
     http.StreamedResponse response = await request.send();
 
     if (response.statusCode == 200) {
-      return await response.stream.bytesToString();
+      var result = json.decode(await response.stream.bytesToString());
+      if (result['isFullFilled'] as bool) {
+        print(response.headers['set-cookie']);
+        return result['data'];
+      }
     } else {
       //throw error
       Get.defaultDialog(
