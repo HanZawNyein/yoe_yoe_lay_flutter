@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:yoe_yoe_lay/modules/auth/controllers/login_controller.dart';
+import 'package:yoe_yoe_lay/modules/auth/controllers/auth_controller.dart';
 
 class LoginScreen extends StatelessWidget {
   final LoginController loginController = Get.put(LoginController());
