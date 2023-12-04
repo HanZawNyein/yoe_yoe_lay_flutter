@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:yoe_yoe_lay/global/drawer_widget/widgets/drawer_widget.dart';
+
+import '../../modules/drawer_widget/widgets/drawer_widget.dart';
 
 class ScreenFrameWidget extends StatelessWidget {
   String title;

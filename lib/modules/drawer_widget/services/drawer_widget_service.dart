@@ -1,8 +1,7 @@
-import 'package:yoe_yoe_lay/global/drawer_widget/api/drawer_api.dart';
-import 'package:yoe_yoe_lay/global/drawer_widget/models/profile_model.dart';
-import 'package:yoe_yoe_lay/modules/auth/models/login_model.dart';
 
 import 'package:yoe_yoe_lay/global/common/base_client.dart';
+import 'package:yoe_yoe_lay/modules/drawer_widget/api/drawer_api.dart';
+import 'package:yoe_yoe_lay/modules/drawer_widget/models/profile_model.dart';
 
 class DrawerService {
   Future<ProfileModel> getProfile() async {

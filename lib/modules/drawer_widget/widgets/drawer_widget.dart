@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:yoe_yoe_lay/global/common/session.dart';
-import 'package:yoe_yoe_lay/global/drawer_widget/controllers/drawer_widegt_controller.dart';
+import 'package:yoe_yoe_lay/modules/drawer_widget/controllers/drawer_widget_controller.dart';
 
 class DrawerWidget extends StatelessWidget {
-  final DrawerWidgetController drawerWidgetController =
-      Get.put(DrawerWidgetController());
+  final DrawerWidgetController drawerWidgetController = Get.put(DrawerWidgetController());
+
+  DrawerWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
