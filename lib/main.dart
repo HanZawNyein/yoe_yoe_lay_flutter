@@ -7,7 +7,6 @@ import 'package:yoe_yoe_lay/modules/base/screens/home_screen.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final Map<String, dynamic> session = await Session().getSession();
-  print(session);
   runApp(GetMaterialApp(
     initialRoute: (session['sessionId'] != null) ? '/home' : '/login',
     getPages: [

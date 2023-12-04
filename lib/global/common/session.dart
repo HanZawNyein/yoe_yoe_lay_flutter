@@ -13,14 +13,14 @@ class Session extends GetxController {
 
   Future<Map<String, dynamic>> getSession() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    print("object");
+    // print("object");
     final Map<String, dynamic> data = {
       "partnerId": prefs.getInt('partnerId'),
       "uid": prefs.getInt('uid'),
       "sessionId": prefs.getString('sessionId'),
     };
-    print("data get sesion");
-    print(data);
+    // print("data get sesion");
+    // print(data);
     // sessionData.value = data; // Update the sessionData observable
     return data;
   }

@@ -13,9 +13,9 @@ class BaseClient {
     var url = Uri.parse(BaseAPI.baseURL + api);
     Map<String, String> headers = {};
     var cookie = await Session().getSession();
-    print("get request");
-    print(cookie);
-    print(api);
+    // print("get request");
+    // print(cookie);
+    // print(api);
     if (cookie['sessionId'] != null){
       headers['Cookie'] = cookie['sessionId'];
     };
@@ -23,7 +23,7 @@ class BaseClient {
     if (response.statusCode == 200) {
       var result = json.decode(response.body);
       if (result['isFullFilled'] as bool) {
-        var cookie = response.headers['set-cookie'];
+        // var cookie = response.headers['set-cookie'];
         // if (cookie != null) {
         //   var temp = result['data'];
         //   temp['session_id'] = cookie;
@@ -40,7 +40,7 @@ class BaseClient {
     var url = Uri.parse('${BaseAPI.baseURL}$api');
     Map<String, String> headers = {};
     var cookie = await Session().getSession();
-    print(cookie);
+    // print(cookie);
     if (cookie['sessionId'] != null) headers['Cookie'] = cookie['sessionId'];
     var request = http.MultipartRequest('POST', url);
     // Convert data to Map<String, String> if needed

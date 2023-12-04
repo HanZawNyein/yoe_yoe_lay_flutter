@@ -9,8 +9,8 @@ class DrawerService {
     var response = await BaseClient()
         .get(DrawerAPI().profileAPI)
         .catchError((error) => print(error));
-    print("response");
-    print(response);
+    // print("response");
+    // print(response);
     if (response == null){
       await Session().getSession();
       return getProfile();

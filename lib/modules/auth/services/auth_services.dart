@@ -10,7 +10,7 @@ class LoginService {
         .post(AuthAPI().loginAPI, body)
         .catchError((error) => print(error));
     if (response == null) ;
-    print(response);
+    // print(response);
     // print(r)
     Session().saveSession(response);
     return loginFromJson(response);
