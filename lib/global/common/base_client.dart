@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:yoe_yoe_lay/global/api/base_api.dart';
+import 'package:yoe_yoe_lay/global/common/session.dart';
 
 class BaseClient {
   var client = http.Client();
@@ -21,7 +22,9 @@ class BaseClient {
 
   Future<dynamic> post(String api, Map<String, dynamic> data) async {
     var url = Uri.parse('${BaseAPI.baseURL}$api');
+    var cookie = await Session().getSession();
     Map<String, String> headers = {};
+    if (cookie != null) headers['Cookie'] = cookie['sessionId'];
     var request = http.MultipartRequest('POST', url);
     // Convert data to Map<String, String> if needed
     Map<String, String> formData = {};
@@ -35,7 +38,12 @@ class BaseClient {
     if (response.statusCode == 200) {
       var result = json.decode(await response.stream.bytesToString());
       if (result['isFullFilled'] as bool) {
-        print(response.headers['set-cookie']);
+        var cookie = response.headers['set-cookie'];
+        if (cookie != null) {
+          var temp = result['data'];
+          temp['session_id'] = cookie;
+          Session().saveSession(temp);
+        }
         return result['data'];
       }
     } else {
